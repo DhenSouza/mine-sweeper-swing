@@ -7,9 +7,9 @@ import java.util.function.Predicate;
 
 public class Board implements ObserverField {
 
-	private int lines;
-	private int columns;
-	private int mines;
+	private final int lines;
+	private final int columns;
+	private final int mines;
 
 	private final List<Field> fields = new ArrayList<>();
 	private final List<Consumer<ResultEvent>> observers = new ArrayList<>();
@@ -23,6 +23,11 @@ public class Board implements ObserverField {
 		AssociateNeighbors();
 		drawMinas();
 
+	}
+	
+	// Percorre todos os campos diretamente usando a classe.
+	public void forEachFields(Consumer<Field> function) {
+		fields.forEach(function);
 	}
 
 	public void addObservers(Consumer<ResultEvent> observer) {
@@ -100,4 +105,12 @@ public class Board implements ObserverField {
 		fields.stream().filter(f -> f.isMined()).forEach(c -> c.setOpen(true));
 	}
 
+	public int getLines() {
+		return lines;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+	
 }

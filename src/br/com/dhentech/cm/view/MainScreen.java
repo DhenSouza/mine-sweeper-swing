@@ -15,7 +15,7 @@ public class MainScreen extends JFrame {
 		setTitle("Campo Minado");
 		setSize(690, 438);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
 
