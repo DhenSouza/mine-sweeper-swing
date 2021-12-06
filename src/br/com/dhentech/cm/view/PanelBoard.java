@@ -2,7 +2,9 @@ package br.com.dhentech.cm.view;
 
 import java.awt.GridLayout;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import br.com.dhentech.cm.model.Board;
 
@@ -15,7 +17,16 @@ public class PanelBoard extends JPanel {
 		board.forEachFields( f -> add(new ButtonField(f)));
 		
 		board.addObservers(e -> {
-			// TODO mostrar resultado para o usuario
+			
+			SwingUtilities.invokeLater(() -> {
+				if(e.isWinner()) {
+					JOptionPane.showMessageDialog(this, "You win, loser!!");
+				} else {
+					JOptionPane.showMessageDialog(this, "You loser, loser!!");
+				}
+				
+				board.resetGame();
+			});
 		});
 	}
 

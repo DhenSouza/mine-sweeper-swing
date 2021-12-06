@@ -24,7 +24,7 @@ public class Board implements ObserverField {
 		drawMinas();
 
 	}
-	
+
 	// Percorre todos os campos diretamente usando a classe.
 	public void forEachFields(Consumer<Field> function) {
 		fields.forEach(function);
@@ -102,7 +102,7 @@ public class Board implements ObserverField {
 	}
 
 	private void viewMines() {
-		fields.stream().filter(f -> f.isMined()).forEach(c -> c.setOpen(true));
+		fields.stream().filter(f -> f.isMined()).filter(f -> !f.isMarked()).forEach(c -> c.setOpen(true));
 	}
 
 	public int getLines() {
@@ -112,5 +112,5 @@ public class Board implements ObserverField {
 	public int getColumns() {
 		return columns;
 	}
-	
+
 }
