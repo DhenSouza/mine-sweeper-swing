@@ -62,7 +62,7 @@ public class Field {
 			if (marked) {
 				notifyObservers(EventField.TOMARK);
 			} else {
-				notifyObservers(EventField.MARCKOFF);
+				notifyObservers(EventField.MARKOFF);
 			}
 		}
 	}
