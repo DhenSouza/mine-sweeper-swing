@@ -55,7 +55,7 @@ public class Field {
 	 * Alterar a marks quando o camopo estiver fechado Change tag when field is
 	 * closed
 	 */
-	void changeMarking() {
+	public void changeMarking() {
 		if (!open) {
 			marked = !marked;
 
@@ -67,7 +67,7 @@ public class Field {
 		}
 	}
 
-	boolean openField() {
+	public boolean openField() {
 		if (!open && !marked) {
 			if (mined) {
 				notifyObservers(EventField.EXPLODE);
@@ -93,7 +93,7 @@ public class Field {
 	 * otherwise it is not accepted
 	 */
 
-	boolean safeneighborhood() {
+	public boolean safeneighborhood() {
 		return neighborhoods.stream().noneMatch(v -> v.mined);
 	}
 
@@ -141,8 +141,8 @@ public class Field {
 	}
 
 	/* Para saber a quantidade de minas que tem na vizinhança */
-	long minesInTheNeighborhood() {
-		return neighborhoods.stream().filter(v -> v.mined).count();
+	public int minesInTheNeighborhood() {
+		return (int) neighborhoods.stream().filter(v -> v.mined).count();
 	}
 
 	void resetGame() {
